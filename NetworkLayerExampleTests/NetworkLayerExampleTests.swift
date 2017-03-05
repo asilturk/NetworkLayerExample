@@ -63,13 +63,11 @@ class NetworkLayerExampleTests: XCTestCase {
         operation.failure = { error in
             XCTFail()
         }
-
+        
         NetworkQueue.shared.addOperation(operation)
-
+        
         waitForExpectations(timeout: 10, handler:nil)
     }
-<<<<<<< HEAD
-=======
     
     func testShoppingMapper() {
         let result = [["unique_id": "123qwe", "name": "foo", "price": 2.3], ["unique_id": "qwe123", "name": "foo", "price": 2.3]]
@@ -107,9 +105,8 @@ class NetworkLayerExampleTests: XCTestCase {
         
         waitForExpectations(timeout: 10.0, handler:nil)
     }
-
->>>>>>> develop
-
+    
+    
 }
 
 extension XCTest {
@@ -126,33 +123,18 @@ extension XCTest {
     
     class MockSignInBackendService: BackendService {
         func request(_ request: BackendAPIRequest,
-<<<<<<< HEAD
-                              success: ((AnyObject?) -> Void)? = nil,
-=======
-                              success: ((Any?) -> Void)? = nil,
->>>>>>> develop
-                              failure: ((NSError) -> Void)? = nil) {
+                     success: ((Any?) -> Void)? = nil,
+                     failure: ((NSError) -> Void)? = nil) {
             
             let result = ["token": MockSignIn.token, "unique_id": MockSignIn.uniqueId]
             
-<<<<<<< HEAD
-            success?(result as AnyObject?)
-=======
             success?(result)
->>>>>>> develop
         }
         
         internal func cancel() {}
     }
     
     class MockSignUpBackendService: BackendService {
-<<<<<<< HEAD
-        func request(_ request: BackendAPIRequest, success: ((AnyObject?) -> Void)?, failure: ((NSError) -> Void)?) {
-            
-            let result = ["unique_id": MockSignIn.uniqueId, "first_name": MockSignUp.name, "last_name": MockSignUp.surname, "email": MockSignUp.email, "phone_number": ""]
-            
-            success?(result as AnyObject?)
-=======
         func request(_ request: BackendAPIRequest, success: ((Any?) -> Void)?, failure: ((NSError) -> Void)?) {
             
             let result = ["unique_id": MockSignIn.uniqueId, "first_name": MockSignUp.name, "last_name": MockSignUp.surname, "email": MockSignUp.email, "phone_number": ""]
@@ -168,10 +150,10 @@ extension XCTest {
             let result = [["unique_id": "123qwe", "name": "foo", "price": 2.3], ["unique_id": "qwe123", "name": "foo", "price": 2.3]]
             
             success?(result)
->>>>>>> develop
         }
         
         internal func cancel() {}
     }
 }
+
 
