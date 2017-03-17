@@ -1,5 +1,3 @@
-import Foundation
-
 internal enum ResponseMapperError: Error {
     case invalid
     case missingAttribute
