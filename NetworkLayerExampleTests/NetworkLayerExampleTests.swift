@@ -63,9 +63,15 @@ class NetworkLayerExampleTests: XCTestCase {
         operation.failure = { error in
             XCTFail()
         }
+<<<<<<< HEAD
         
         NetworkQueue.shared.addOperation(operation)
         
+=======
+
+        NetworkQueue.shared.addOperation(operation)
+
+>>>>>>> develop
         waitForExpectations(timeout: 10, handler:nil)
     }
     
@@ -105,8 +111,13 @@ class NetworkLayerExampleTests: XCTestCase {
         
         waitForExpectations(timeout: 10.0, handler:nil)
     }
+<<<<<<< HEAD
     
     
+=======
+
+
+>>>>>>> develop
 }
 
 extension XCTest {
@@ -123,8 +134,13 @@ extension XCTest {
     
     class MockSignInBackendService: BackendService {
         func request(_ request: BackendAPIRequest,
+<<<<<<< HEAD
                      success: ((Any?) -> Void)? = nil,
                      failure: ((NSError) -> Void)? = nil) {
+=======
+                              success: ((Any?) -> Void)? = nil,
+                              failure: ((NSError) -> Void)? = nil) {
+>>>>>>> develop
             
             let result = ["token": MockSignIn.token, "unique_id": MockSignIn.uniqueId]
             
@@ -156,4 +172,7 @@ extension XCTest {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
