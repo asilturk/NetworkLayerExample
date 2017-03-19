@@ -7,7 +7,7 @@ public class SignInOperation: ServiceOperation {
     public var success: ((SignInItem) -> Void)?
     public var failure: ((NSError) -> Void)?
     
-    public init(email: String, password: String, service: BackendService? = nil) {
+    public init(email: String, password: String, service: BackendService = MyBackendService(BackendConfiguration.shared)) {
         request = SignInRequest(email: email, password: password)
         super.init(service: service)
     }

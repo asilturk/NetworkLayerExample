@@ -4,8 +4,8 @@ public class ServiceOperation: NetworkOperation {
     
     let service: BackendService
     
-    init(service: BackendService? = nil) {
-        self.service = service ?? MyBackendService(BackendConfiguration.shared)
+    init(service: BackendService = MyBackendService(BackendConfiguration.shared)) {
+        self.service = service //?? MyBackendService(BackendConfiguration.shared)
         super.init()
     }
     

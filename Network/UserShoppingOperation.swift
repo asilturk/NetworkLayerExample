@@ -14,7 +14,7 @@ final class UserShoppingOperation: ServiceOperation {
     public var success: (([ShoppItem]) -> Void)? = nil
     public var failure: ((NSError) -> Void)? = nil
     
-    public init(uniqueId: String, service: BackendService? = nil) {
+    public init(uniqueId: String, service: BackendService = MyBackendService(BackendConfiguration.shared)) {
         request = UserShoppingRequest(uniqueId: uniqueId)
         super.init(service: service)
     }
