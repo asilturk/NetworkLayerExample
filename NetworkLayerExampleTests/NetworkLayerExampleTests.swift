@@ -70,10 +70,8 @@ class NetworkLayerExampleTests: XCTestCase {
     }
     
     func testShoppingMapper() {
-        let result = [["unique_id": "123qwe", "name": "foo", "price": 2.3], ["unique_id": "qwe123", "name": "foo", "price": 2.3]]
-        
         do {
-            let map = try UserShoppingResponseMapper.process(result)
+            let map = try UserShoppingResponseMapper.process(MockUserShoppingResult().JSON())
             XCTAssertNotNil(map)
             XCTAssertTrue(map.count == 2)
         } catch {
@@ -107,47 +105,70 @@ class NetworkLayerExampleTests: XCTestCase {
     }
 }
 
-extension XCTest {
+extension XCTestCase {
     struct MockSignIn {
         static let token = "aaaa"
         static let uniqueId = "bbbb"
+        
+        func JSON() -> Any? {
+            return ["token": MockSignIn.token,
+                    "unique_id": MockSignIn.uniqueId]
+        }
     }
     
     struct MockSignUp {
         static let name = "Alessio"
         static let surname = "Roberto"
         static let email = "a@b.com"
+        
+        func JSON() -> Any? {
+            return ["unique_id": MockSignIn.uniqueId,
+                    "first_name": MockSignUp.name,
+                    "last_name": MockSignUp.surname,
+                    "email": MockSignUp.email,
+                    "phone_number": ""]
+        }
+    }
+    
+    struct MockUserShoppingResult {
+        func JSON() -> Any? {
+            return [
+                ["unique_id": "123qwe",
+                 "name": "foo",
+                 "price": 2.3],
+                ["unique_id": "qwe123",
+                 "name": "foo",
+                 "price": 2.3]
+            ]
+        }
+
     }
     
     class MockSignInBackendService: BackendService {
         func request(_ request: BackendAPIRequest,
                      success: ((Any?) -> Void)? = nil,
                      failure: ((NSError) -> Void)? = nil) {
-            
-            let result = ["token": MockSignIn.token, "unique_id": MockSignIn.uniqueId]
-            
-            success?(result)
+            success?(MockSignIn().JSON())
         }
         
         internal func cancel() {}
     }
     
     class MockSignUpBackendService: BackendService {
-        func request(_ request: BackendAPIRequest, success: ((Any?) -> Void)?, failure: ((NSError) -> Void)?) {
-            
-            let result = ["unique_id": MockSignIn.uniqueId, "first_name": MockSignUp.name, "last_name": MockSignUp.surname, "email": MockSignUp.email, "phone_number": ""]
-            
-            success?(result)
+        func request(_ request: BackendAPIRequest,
+                     success: ((Any?) -> Void)?,
+                     failure: ((NSError) -> Void)?) {
+            success?(MockSignUp().JSON())
         }
         
         internal func cancel() {}
     }
     
     class MockUserShoppingBackendService: BackendService {
-        func request(_ request: BackendAPIRequest, success: ((Any?) -> Void)?, failure: ((NSError) -> Void)?) {
-            let result = [["unique_id": "123qwe", "name": "foo", "price": 2.3], ["unique_id": "qwe123", "name": "foo", "price": 2.3]]
-            
-            success?(result)
+        func request(_ request: BackendAPIRequest,
+                     success: ((Any?) -> Void)?,
+                     failure: ((NSError) -> Void)?) {
+            success?(MockUserShoppingResult().JSON())
         }
         
         internal func cancel() {}
