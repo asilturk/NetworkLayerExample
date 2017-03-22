@@ -1,7 +1,5 @@
 # NetworkLayerExample
 
-<center> <h1>🚧 Work In Progress 🚧</h1> </center>
-
 Improved version of the Network Layer solution by [Tomasz Szulc](https://github.com/tomkowz) presented in the article: http://szulctomasz.com/how-do-I-build-a-network-layer/
 
 The idea is to create a modular network layer, 100% testable, that implements `NSOperation` to manage easily a requests queue, with priority, dependecy, cancel operation etc.
