@@ -51,4 +51,10 @@ public init(uniqueId: String, service: BackendService = MyBackendService(Backend
 
 > It allows you to execute HTTP request, it incorporates NSURLSession internally. Every network service can execute just one request at a time, can cancel the request (big advantage), and has callbacks for success and failure responses.
 
+## Implementation
+
+For the implementation read the original blog post and take a look to `Network/Request`, `Network/Operations` and `Network/Mappers`.
+
 ## Unit Test
+
+You can find some test examples in `NetworkLayerExampleTest/NetworkLayerExampleTest.swift`.
