@@ -1,5 +1,5 @@
 # NetworkLayerExample
-Improved version of the Network Layer presented in the article: http://szulctomasz.com/how-do-I-build-a-network-layer/
+Improved version of the Network Layer solution by [Tomasz Szulc](https://github.com/tomkowz) presented in the article: http://szulctomasz.com/how-do-I-build-a-network-layer/
 
 The idea is to create a modular network layer, 100% testable, that implements `NSOperation` to manage easily a requests queue, with priority, dependecy, cancel operation etc.
 
@@ -44,6 +44,8 @@ public init(uniqueId: String, service: BackendService = MyBackendService(Backend
 
 > It is the class that takes requests (`Request` objects described above) related to the backend. It uses `NetworkService` internally.
 
-- ## NetworkService
+- ### NetworkService
 
 > It allows you to execute HTTP request, it incorporates NSURLSession internally. Every network service can execute just one request at a time, can cancel the request (big advantage), and has callbacks for success and failure responses.
+
+## Unit Test
