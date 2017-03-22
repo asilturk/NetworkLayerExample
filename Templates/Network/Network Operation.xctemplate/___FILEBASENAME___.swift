@@ -8,24 +8,27 @@
 
 import Foundation
 
-public class ___FILEBASENAMEASIDENTIFIER___: ServiceOperation {
-    
+final class ___FILEBASENAMEASIDENTIFIER___: ServiceOperation {
+
     private let request: <#BackendAPIRequest#>
-    
-    public var success: ((UserItem) -> Void)?
+
+    public var success: ((<#ParsedItem#>) -> Void)?
     public var failure: ((NSError) -> Void)?
-    
-//    public init(email: String, password: String) {
+
+//    public init(email: String,
+//             password: String,
+//              service: BackendService = MyBackendService(BackendConfiguration.shared))
+//    {
 //        request = <#BackendAPIRequest()#>
-//        super.init()
+//        super.init(service: service)
 //    }
-    
+
     public override func start() {
         super.start()
         service.request(request, success: handleSuccess, failure: handleFailure)
     }
-    
-    private func handleSuccess(_ response: AnyObject?) {
+
+    private func handleSuccess(_ response: Any?) {
         do {
             let item = try SignInResponseMapper.process(response)
             self.success?(item)
@@ -34,10 +37,9 @@ public class ___FILEBASENAMEASIDENTIFIER___: ServiceOperation {
             handleFailure(NSError.cannotParseResponse())
         }
     }
-    
+
     private func handleFailure(_ error: NSError) {
         self.failure?(error)
         self.finish()
     }
 }
-
